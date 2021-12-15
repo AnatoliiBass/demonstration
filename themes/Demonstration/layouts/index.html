@@ -30,7 +30,9 @@
             </div>
             <div class='modal-body'>
                {{/* <iframe src='https://buy.stripe.com/test_7sI8xi6UF3Au36gdQQ'></iframe> */}}
-               <iframe srcdoc="
+               <iframe payment sync-xhr document-domain midi publickey-credentials-get
+                  sandbox="allow-forms allow-modals allow-popups allow-scripts allow-popups-to-escape-sandbox allow-same-origin allow-top-navigation"
+                  srcdoc="
                <!DOCTYPE html>
                <html>
                <head>
