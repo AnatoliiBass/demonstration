@@ -8,7 +8,6 @@ const bodyParser = require('body-parser')
 app.use(express.static('../public'))
 app.use(bodyParser.json())
 
-console.log(stripe.checkout);
 
 app.get('/', (req, res) => {
    const path = resolve('../public' + '/index.html')
@@ -31,7 +30,7 @@ app.post('/create-checkout-session', async (req, res) => {
             price_data: {
                currency: 'usd',
                product_data: {
-                  name: 'T-shirt',
+                  name: 'Book',
                },
                unit_amount: 2000,
             },
