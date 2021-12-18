@@ -5,7 +5,7 @@ const app = express()
 // Sign in to see your own test API key embedded in code samples.
 const stripe = require("stripe")('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
-app.use(express.static("../public"));
+app.use(express.static("../"));
 app.use(express.json());
 
 const calculateOrderAmount = (items) => {
