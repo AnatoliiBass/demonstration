@@ -1,6 +1,4 @@
-// This is a public sample test API key.
-// To avoid exposing it, don't submit any personally identifiable information through requests with this API key.
-// Sign in to see your own test API key embedded in code samples.
+
 const stripe = Stripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 // The items the customer wants to buy
@@ -17,8 +15,9 @@ document
 
 // Fetches a payment intent and captures the client secret
 async function initialize() {
-   const response = await fetch("/create-checkout-session", {
+   const response = await fetch("/create-payment-intent", {
       method: "POST",
+      mode: "no-cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items }),
    });

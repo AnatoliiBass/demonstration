@@ -19,10 +19,17 @@
 
 <body>
    <div class="wrapper">
-      <div>
-         <button type="button" class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>
-            Demonstration
-         </button>
+      <div class="block">
+         <div>
+            <form action="/create-checkout-session" method="POST">
+               <button type="submit">Checkout</button>
+            </form>
+         </div>
+         <div>
+            <button type="button" class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>
+               Demonstration
+            </button>
+         </div>
       </div>
       <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
          <div class='modal-dialog modal-fullscreen modal-dialog-scrollable'>
