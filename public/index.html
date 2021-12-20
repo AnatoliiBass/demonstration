@@ -22,8 +22,16 @@
    <div class="wrapper">
       <div class="block">
          <div>
-            <form action="/create-checkout-session" method="POST">
+            <form action="/create-checkout-session" id="payment-form2" method="POST">
                <button type="submit">Checkout</button>
+               <div id="payment-element2">
+                  
+               </div>
+               <button id="submit2">
+                  <div class="spinner hidden" id="spinner"></div>
+                  <span id="button-text">Pay now</span>
+               </button>
+               <div id="payment-message" class="hidden"></div>
             </form>
          </div>
          <div>

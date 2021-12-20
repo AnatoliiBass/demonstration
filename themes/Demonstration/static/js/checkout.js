@@ -4,14 +4,20 @@ const stripe = Stripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 // The items the customer wants to buy
 const items = [{ id: "xl-tshirt" }];
 
-let elements;
 
-initialize();
+
+let elements, elements2;
+initializeTwo()
+//initialize();
 checkStatus();
 
 document
    .querySelector("#payment-form")
    .addEventListener("submit", handleSubmit);
+
+document
+   .querySelector("#payment-form2")
+   .addEventListener("submit2", handleSubmit);
 
 // Fetches a payment intent and captures the client secret
 async function initialize() {
@@ -32,12 +38,32 @@ async function initialize() {
    paymentElement.mount("#payment-element");
 }
 
+async function initializeTwo() {
+   const response = await fetch("/create-checkout-session", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items }),
+   });
+   console.log(response);
+   const { session } = await response.json();
+   //console.log(id);
+   const appearance = {
+      theme: 'stripe',
+   };
+   elements2 = stripe.elements({ appearance, session });
+
+   const paymentElement = elements2.create("card");
+   paymentElement.mount("#payment-element2");
+}
+
+
 async function handleSubmit(e) {
    e.preventDefault();
    setLoading(true);
 
    const { error } = await stripe.confirmPayment({
-      elements,
+      elements2,
       confirmParams: {
          // Make sure to change this to your payment completion page
          return_url: "http://localhost:4242/index.html",

@@ -24,6 +24,15 @@ const calculateOrderAmount = (items) => {
 
 app.post('/create-checkout-session', async (req, res) => {
    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      shipping_address_collection: {
+         allowed_countries: ['US', 'CA'],
+      },
+      shipping_options: [
+         {
+
+         },
+      ],
       line_items: [
          {
             price_data: {
@@ -41,8 +50,35 @@ app.post('/create-checkout-session', async (req, res) => {
       cancel_url: 'https://example.com/cancel',
    });
 
-   res.redirect(303, session.url);
+   res.send({ session });
 });
+// console.log(stripe.checkout);
+// console.log(stripe.checkout.sessions);
+
+// app.post('/create-checkout-session', async (req, res) => {
+//    const session = await stripe.checkout.sessions.create({
+//       line_items: [
+//          {
+//             price_data: {
+//                currency: 'usd',
+//                product_data: {
+//                   name: 'T-shirt',
+//                },
+//                unit_amount: 2000,
+//             },
+//             quantity: 1,
+//          },
+//       ],
+//       mode: 'payment',
+//       success_url: 'https://example.com/success',
+//       cancel_url: 'https://example.com/cancel',
+//    });
+
+//    console.log(session);
+
+//    //res.redirect(303, session.url);
+//    res.send({ clientSecret: session.client_secret })
+// });
 
 app.post("/create-payment-intent", async (req, res) => {
    const { items } = req.body;
