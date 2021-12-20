@@ -12,6 +12,7 @@ body {
    align-items: center;
 }
 
-iframe {
-   width: 100%;
+.block {
+   display: flex;
+   flex-direction: column;
 }

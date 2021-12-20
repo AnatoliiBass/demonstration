@@ -11,3 +11,8 @@ body {
    justify-content: center;
    align-items: center;
 }
+
+.block {
+   display: flex;
+   flex-direction: column;
+}
